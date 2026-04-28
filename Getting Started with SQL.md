@@ -194,3 +194,18 @@ docker run -d --name sql_class -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=sql_
 docker rm -f sql_class
 ```
 
+## For Creating Your First Database Container (with persistent data) , [ works in MAC / Ubuntu / Linux / WSL]
+
+docker run -d --name sql_class -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=sql_class_01_db -p 5433:5432 postgres
+
+### For Windows :: if you are on powershell then use {PWD}
+
+docker run -d --name sql_class -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=sql_class_01_db -p 5433:5432 -v ${PWD}/pgdata:/var/lib/postgresql/data postgres
+
+#### on Command Prompt use it ::
+
+docker run -d --name sql_class -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=sql_class_01_db -p 5433:5432 -v %cd%/pgdata:/var/lib/postgresql/data postgres
+
+### For Removing existing container , run this ::
+
+docker rm -f sql_class
