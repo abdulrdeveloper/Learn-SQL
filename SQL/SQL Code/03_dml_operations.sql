@@ -26,12 +26,15 @@ INSERT INTO canteen_menu (item_name, category, price) VALUES
 SELECT * FROM canteen_menu;
 
 UPDATE canteen_menu SET price = 20 WHERE item_name = 'Vada Pav';
+
 UPDATE canteen_menu SET price = price - 5 WHERE category = 'Beverages';
+
 UPDATE canteen_menu SET is_available = FALSE WHERE item_name = 'Samosa';
 
 SELECT * FROM canteen_menu;
 
 DELETE FROM canteen_menu WHERE item_name = 'Cold Coffee';
+
 DELETE FROM canteen_menu WHERE price > 50;
 
 SELECT * FROM canteen_menu;

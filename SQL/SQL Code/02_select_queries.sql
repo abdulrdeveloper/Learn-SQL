@@ -35,33 +35,53 @@ SELECT * FROM ipl_players;
 SELECT name, nickname, team, auction_price_crores FROM ipl_players;
 
 SELECT * FROM ipl_players WHERE team = 'Mumbai Indians';
+
 SELECT name, nickname, auction_price_crores FROM ipl_players WHERE auction_price_crores > 10.0;
+
 SELECT * FROM ipl_players WHERE role = 'All-Rounder' AND wickets_taken > 10;
+
 SELECT * FROM ipl_players WHERE team = 'CSK' OR team = 'RCB';
+
 SELECT * FROM ipl_players WHERE name LIKE 'R%';
+
 SELECT * FROM ipl_players WHERE auction_price_crores BETWEEN 5 AND 12;
+
 SELECT * FROM ipl_players WHERE team != 'Mumbai Indians';
+
 SELECT * FROM ipl_players WHERE team <> 'Mumbai Indians';
+
 SELECT * FROM ipl_players WHERE team IS NULL;
+
 SELECT * FROM ipl_players WHERE team IS NOT NULL;
+
 SELECT * FROM ipl_players WHERE role = 'Batsman' AND (team = 'RCB' OR team = 'CSK');
 
 SELECT * FROM ipl_players WHERE name LIKE '_a%';
+
 SELECT * FROM ipl_players WHERE name LIKE '__r%';
+
+SELECT * FROM ipl_players WHERE name ILIKE '__R%';
+
 SELECT * FROM ipl_players WHERE name NOT LIKE 'R%';
+
 SELECT * FROM ipl_players WHERE team NOT IN ('Mumbai Indians', 'CSK', 'RCB');
+
 SELECT * FROM ipl_players WHERE auction_price_crores NOT BETWEEN 10 AND 15;
 
 SELECT name, nickname, runs_scored FROM ipl_players ORDER BY runs_scored DESC;
+
 SELECT name, nickname, auction_price_crores FROM ipl_players ORDER BY auction_price_crores ASC;
+
 SELECT team, name, auction_price_crores FROM ipl_players ORDER BY team ASC, auction_price_crores DESC;
 
 SELECT name, auction_price_crores FROM ipl_players ORDER BY auction_price_crores DESC LIMIT 3;
+
 SELECT name, auction_price_crores FROM ipl_players ORDER BY auction_price_crores DESC LIMIT 3 OFFSET 3;
 
 SELECT name, nickname, auction_price_crores, (auction_price_crores * 100) AS price_in_lakhs FROM ipl_players;
+
 SELECT name, nickname, auction_price_crores, auction_price_crores + 2 AS new_price FROM ipl_players;
+
 SELECT name, nickname, (runs_scored + (wickets_taken * 25)) AS total_impact FROM ipl_players ORDER BY total_impact DESC;
 
 SELECT DISTINCT role FROM ipl_players;
-

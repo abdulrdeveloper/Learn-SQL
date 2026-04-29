@@ -28,13 +28,19 @@ INSERT INTO smart_watch_sales (brand, model, city, units_sold, price_per_unit, s
 ('Noise', 'Pro 4', 'Delhi', 12, 2500.00, '2023-10-05');
 
 SELECT COUNT(*) AS total_transactions FROM smart_watch_sales;
+
 SELECT SUM(units_sold * price_per_unit) AS total_revenue FROM smart_watch_sales;
+
 SELECT AVG(price_per_unit) AS avg_watch_price FROM smart_watch_sales;
+
 SELECT MIN(price_per_unit) AS cheapest, MAX(price_per_unit) AS costliest FROM smart_watch_sales;
 
 SELECT brand, SUM(units_sold) AS total_units_sold FROM smart_watch_sales GROUP BY brand ORDER BY total_units_sold DESC;
+
 SELECT city, SUM(units_sold * price_per_unit) AS city_revenue FROM smart_watch_sales GROUP BY city ORDER BY city_revenue DESC;
+
 SELECT city, brand, SUM(units_sold) AS units FROM smart_watch_sales GROUP BY city, brand ORDER BY city ASC, units DESC;
 
 SELECT brand, SUM(units_sold) AS total_units, MAX(price_per_unit) FROM smart_watch_sales GROUP BY brand HAVING SUM(units_sold) > 20;
+
 SELECT city, AVG(price_per_unit) AS avg_price FROM smart_watch_sales GROUP BY city HAVING AVG(price_per_unit) > 10000;
