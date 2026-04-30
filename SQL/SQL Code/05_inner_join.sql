@@ -10,37 +10,29 @@ CREATE TABLE students (
 
 CREATE TABLE internships (
     internship_id SERIAL PRIMARY KEY,
-    -- Foreign Key with CASCADE options
-    -- ON DELETE CASCADE: If a student is deleted, their internships are also deleted.
-    -- ON UPDATE CASCADE: If a student_id changes, the internships are updated to match.
-    -- student_id INT REFERENCES students(student_id) ON DELETE CASCADE ON UPDATE CASCADE, 
-    
-    -- Alternatives:
+
     student_id INT REFERENCES students(student_id) ON DELETE SET NULL, -- Keeps the internship but removes the student link
-    -- student_id INT REFERENCES students(student_id) ON DELETE RESTRICT, -- Prevents deleting a student if they have applied to internships (Default)
-    
+
     company_name VARCHAR(100),
     role VARCHAR(50),
     stipend INT,
-    status VARCHAR(20) -- Selected, Pending, Rejected
+    status VARCHAR(20)
 );
 
--- Inserting Students (Including some who haven't applied for internships yet)
 INSERT INTO students (name, email, branch) VALUES 
-('Priya', 'priya@gmail.com', 'Mechanical'), -- Priya is focusing on higher studies, no internships.
+('Priya', 'priya@gmail.com', 'Mechanical'), 
 ('Sneha', 'sneha@yahoo.com', 'Information Tech'),
 ('Amit', 'amit@hotmail.com', 'Electronics'),
 ('Rahul', 'rahul@gmail.com', 'Computer Science'),
-('Rohan', 'rohan@outlook.com', 'Civil'); -- Rohan is working on a startup, no internships.
+('Rohan', 'rohan@outlook.com', 'Civil');
 
--- Inserting Internships
 INSERT INTO internships (student_id, company_name, role, stipend, status) 
 VALUES 
-(1, 'Google', 'Software Engineering Intern', 100000, 'Selected'), -- Rahul got selected!
-(1, 'Microsoft', 'SDE Intern', 85000, 'Selected'), -- Rahul is killing it
-(2, 'Amazon', 'Data Analyst Intern', 60000, 'Pending'), -- Sneha is waiting
-(3, 'TCS', 'System Engineer Intern', 20000, 'Selected'), -- Amit got an offer
-(5, 'OpenAI', 'AI Researcher', 150000, 'Selected'); -- Student ID 99 does not exist (Orphan Record) -> Would be BLOCKED by Foreign Key Constraint
+(1, 'Google', 'Software Engineering Intern', 100000, 'Selected'),
+(1, 'Microsoft', 'SDE Intern', 85000, 'Selected'),
+(2, 'Amazon', 'Data Analyst Intern', 60000, 'Pending'),
+(3, 'TCS', 'System Engineer Intern', 20000, 'Selected'),
+(5, 'OpenAI', 'AI Researcher', 150000, 'Selected');
 
 SELECT 
     ROW_NUMBER() OVER (ORDER BY internship_id) AS serial_number, 
