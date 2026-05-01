@@ -63,3 +63,6 @@ SELECT
     i.status
 FROM students s
 JOIN internships i ON s.student_id = i.student_id;
+
+
+-- Get All tables of Students and internships with Left Join
