@@ -22,4 +22,20 @@ When a match is not found on the right table, fields from the right table act as
 Use a `LEFT JOIN` and filter the results by checking where the primary/foreign key on the right side `IS NULL`.
 
 ---
-*For the exact code, see the `06_left_join.sql` file.*
+
+## 3. Full Example Code
+
+```sql
+SELECT 
+    s.name, 
+    s.branch,
+    COALESCE(i.company_name, 'No Internship') AS company_name,
+    COALESCE(i.stipend, 0) AS stipend
+FROM students s
+LEFT JOIN internships i ON s.student_id = i.student_id;
+
+SELECT s.name, s.email, s.branch, i.*
+FROM students s
+LEFT JOIN internships i ON s.student_id = i.student_id
+WHERE i.internship_id IS NULL;
+```

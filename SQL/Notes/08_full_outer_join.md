@@ -25,4 +25,22 @@ It is essentially a combination of a `LEFT JOIN` and a `RIGHT JOIN`.
 Perform a `FULL OUTER JOIN` and add a `WHERE` clause to filter out the matching combinations (e.g., where `student_id IS NULL OR internship_id IS NULL`).
 
 ---
-*For the exact code, see the `08_full_outer_join.sql` file.*
+
+## 3. Full Example Code
+
+```sql
+SELECT 
+    s.name AS student_name, 
+    s.branch,
+    i.company_name, 
+    i.status 
+FROM students s
+FULL OUTER JOIN internships i ON s.student_id = i.student_id;
+
+SELECT 
+    s.name AS student_name, 
+    i.company_name
+FROM students s
+FULL OUTER JOIN internships i ON s.student_id = i.student_id
+WHERE s.student_id IS NULL OR i.internship_id IS NULL;
+```

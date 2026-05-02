@@ -19,4 +19,25 @@ Generally, `RIGHT JOIN` is rarely used in practice because developers prefer to 
 Because of this, you typically rewrite a Right Join as a Left Join by swapping the tables.
 
 ---
-*For the exact code, see the `07_right_join.sql` file.*
+
+## 3. Full Example Code
+
+```sql
+SELECT 
+    s.name, 
+    s.branch,
+    i.company_name, 
+    i.role,
+    i.stipend 
+FROM students s
+RIGHT JOIN internships i ON s.student_id = i.student_id;
+
+SELECT 
+    s.name, 
+    s.branch,
+    i.company_name, 
+    i.role,
+    i.stipend
+FROM internships i
+LEFT JOIN students s ON i.student_id = s.student_id;
+```
